@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace TestFinaleLuca {
 	class Program {
 		static void Main(string[] args) {
+			StampaNumeri();
+		}
+		static void StampaNumeri(){
 			int y = 0;
 			int x = 0;
 			bool stop = true;
@@ -33,7 +36,7 @@ namespace TestFinaleLuca {
 				}
 			}
 			Console.WriteLine("");
-			Console.WriteLine("Fine numeri Dispari");
+			Console.WriteLine("Fine numeri Dispari");		
 		}
 	}
 }
