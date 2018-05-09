@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TestFinaleLuca {
-	class Program {
-		static void Main(string[] args) {
+	public class Program {
+		public static void Main(string[] args) {
 			StampaNumeri();
 			Console.WriteLine();
 			OccorrenzeParole();
 			Console.WriteLine();
 		}
 
-		static void OccorrenzeParole(){
+		public static void OccorrenzeParole(){
 			string start = "Questa è una frase di esempio come un'altra frase di esempio";
 			string frase = start;
 			List<string> parole = new List<string>();
@@ -44,7 +44,7 @@ namespace TestFinaleLuca {
 			}		
 		}
 
-		static void StampaNumeri(){
+		public static void StampaNumeri(){
 			int y = 0;
 			int x = 0;
 			bool stop = true;
