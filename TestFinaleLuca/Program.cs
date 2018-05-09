@@ -7,10 +7,47 @@ using System.Threading.Tasks;
 namespace TestFinaleLuca {
 	public class Program {
 		public static void Main(string[] args) {
-			StampaNumeri();
+			//StampaNumeri();
+			//Console.WriteLine();
+			//OccorrenzeParole();
+			//Console.WriteLine();
+
+			List<int> lista1 = new List<int>() { { 1 }, { 9 }, { 8 }, { 7 }, { 6 }, { 54 }, { 56 } };
+			List<int> lista2 = new List<int>() { {8765}, {4}, {3}, {4}, {56}, {78}, {998}, {76}, {54} };
+
+			for (int h = 0; h < lista1.Count; h++)
+				Console.Write($"{lista1[h]}, ");
 			Console.WriteLine();
-			OccorrenzeParole();
+
+			for (int h = 0; h < lista1.Count; h++){
+				for (int k = h +1; k < lista1.Count; k++) {
+					if(lista1[h] > lista1[k]){
+						int aus = lista1[k];
+						lista1[k] = lista1[h];
+						lista1[h] = aus;
+					}
+				}
+			}
+			for (int h = 0; h < lista1.Count; h++)
+				Console.Write($"{lista1[h]}, ");
 			Console.WriteLine();
+			Console.WriteLine();
+
+			for (int h = 0; h < lista2.Count; h++)
+				Console.Write($"{lista2[h]}, ");
+			Console.WriteLine();
+
+			for (int h = 0; h < lista2.Count; h++) {
+				for (int k = h + 1; k < lista2.Count; k++) {
+					if (lista2[h] > lista2[k]) {
+						int aus = lista2[k];
+						lista2[k] = lista2[h];
+						lista2[h] = aus;
+					}
+				}
+			}
+			for (int h = 0; h < lista2.Count; h++)
+				Console.Write($"{lista2[h]}, ");
 		}
 
 		public static void OccorrenzeParole(){
