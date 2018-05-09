@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 namespace TestFinaleLuca {
 	public class Program {
 		public static void Main(string[] args) {
-			//StampaNumeri();
-			//Console.WriteLine();
-			//OccorrenzeParole();
-			//Console.WriteLine();
+			StampaNumeri();
+			Console.WriteLine();
+			OccorrenzeParole();
+			Console.WriteLine();
+			OrdinamentoListe();
+		}
 
+		public static void OrdinamentoListe(){
 			List<int> lista1 = new List<int>() { { 1 }, { 9 }, { 8 }, { 7 }, { 6 }, { 54 }, { 56 } };
 			List<int> lista2 = new List<int>() { {8765}, {4}, {3}, {4}, {56}, {78}, {998}, {76}, {54} };
 
@@ -19,15 +22,8 @@ namespace TestFinaleLuca {
 				Console.Write($"{lista1[h]}, ");
 			Console.WriteLine();
 
-			for (int h = 0; h < lista1.Count; h++){
-				for (int k = h +1; k < lista1.Count; k++) {
-					if(lista1[h] > lista1[k]){
-						int aus = lista1[k];
-						lista1[k] = lista1[h];
-						lista1[h] = aus;
-					}
-				}
-			}
+			Sort(lista1);
+
 			for (int h = 0; h < lista1.Count; h++)
 				Console.Write($"{lista1[h]}, ");
 			Console.WriteLine();
@@ -37,17 +33,61 @@ namespace TestFinaleLuca {
 				Console.Write($"{lista2[h]}, ");
 			Console.WriteLine();
 
-			for (int h = 0; h < lista2.Count; h++) {
-				for (int k = h + 1; k < lista2.Count; k++) {
-					if (lista2[h] > lista2[k]) {
-						int aus = lista2[k];
-						lista2[k] = lista2[h];
-						lista2[h] = aus;
+			Sort(lista2);
+
+			for (int h = 0; h < lista2.Count; h++)
+				Console.Write($"{lista2[h]}, ");
+			Console.WriteLine("\n");
+
+			int l1 = 0;
+			int l2 = 0;
+			List<int> listaTot = new List<int>();
+			while(l1 < lista1.Count && l2 < lista2.Count){
+				if (lista1[l1] < lista2[l2]) {
+					listaTot.Add(lista1[l1]);
+					++l1;
+				} else if (lista1[l1] > lista2[l2]) {
+					listaTot.Add(lista2[l2]);
+					++l2;
+				} else {
+					listaTot.Add(lista1[l1]);
+					++l1;
+					listaTot.Add(lista2[l2]);
+					++l2;
+				}
+			}
+			if (l1 >= lista1.Count) {
+				while(l2 < lista2.Count) {
+					listaTot.Add(lista2[l2]);
+					++l2;
+				}
+			} else{
+				while (l1 < lista1.Count) {
+					listaTot.Add(lista1[l1]);
+					++l1;
+				}
+			}
+
+			//Console.WriteLine($"lista1.Count = {lista1.Count}");
+			//Console.WriteLine($"lista2.Count = {lista2.Count}");
+			//Console.WriteLine($"listaTot.Count = {listaTot.Count}");
+
+			Console.Write("listaTot = ");
+			for (int z = 0; z < listaTot.Count; z++)
+				Console.Write($"{listaTot[z]}, ");
+			Console.WriteLine("\n");		
+		}
+
+		private static void Sort(List<int> lista){
+			for (int h = 0; h < lista.Count; h++) {
+				for (int k = h + 1; k < lista.Count; k++) {
+					if (lista[h] > lista[k]) {
+						int aus = lista[k];
+						lista[k] = lista[h];
+						lista[h] = aus;
 					}
 				}
 			}
-			for (int h = 0; h < lista2.Count; h++)
-				Console.Write($"{lista2[h]}, ");
 		}
 
 		public static void OccorrenzeParole(){
